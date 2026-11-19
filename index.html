@@ -1,49 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mausam App - Weather</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloudline | Live Weather & 5-Day Forecast</title>
+  <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="main-box">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+
+  <div class="box">
     <header>
-      <h2>🌦️ Mausam App</h2>
-      <p>Apne sheher ka mausam dekho</p>
+      <a class="logo" href="./index.html"><span class="logo-icon">☁</span> cloudline<span>.</span></a>
+      <span class="live">● LIVE WEATHER</span>
     </header>
 
-    <form id="myForm">
-      <input id="cityInput" type="text" placeholder="City likho.. Karachi" />
-      <button type="submit" id="searchBtn">Search</button>
-    </form>
+    <main>
+      <section class="top">
+        <p class="small">YOUR SKY, AT A GLANCE</p>
+        <h1>A little clarity,<br><span>whatever the weather.</span></h1>
+        <p class="para">Real-time conditions and a simple five-day forecast, for wherever life takes you.</p>
 
-    <div class="chips">
-      <button onclick="quickSearch('Karachi')">Karachi</button>
-      <button onclick="quickSearch('Lahore')">Lahore</button>
-      <button onclick="quickSearch('Islamabad')">Islamabad</button>
-      <button onclick="quickSearch('Hyderabad')">Hyderabad</button>
-    </div>
+        <form id="searchForm" class="search">
+          <span>⌕</span>
+          <input id="cityInput" type="search" placeholder="Search a city, e.g. Karachi">
+          <button type="submit" id="searchBtn">Get weather ↗</button>
+        </form>
 
-    <p id="msg"></p>
+        <div class="chips">
+          <span>TRY:</span>
+          <button type="button" data-city="Karachi">Karachi</button>
+          <button type="button" data-city="Lahore">Lahore</button>
+          <button type="button" data-city="Islamabad">Islamabad</button>
+          <button type="button" data-city="London">London</button>
+        </div>
+      </section>
 
-    <div id="weatherBox" style="display:none;">
-      <h1 id="cityName">-</h1>
-      <p id="country">-</p>
-      <h1 id="temp">--°</h1>
-      <p id="desc">-</p>
-      <p>Feels Like: <b id="feels">-</b></p>
+      <div id="msg" hidden></div>
 
-      <div class="boxes">
-        <div class="mini-box">Humidity<br><b id="hum">-</b></div>
-        <div class="mini-box">Wind<br><b id="wind">-</b></div>
-        <div class="mini-box">Rain<br><b id="rain">-</b></div>
+      <section id="empty">
+        <span>🌤️</span>
+        <p>Search for a city to see its weather.</p>
+      </section>
+
+      <div id="panel" hidden>
+        <section class="today">
+          <div class="left">
+            <div class="topline"><span>CURRENT CONDITIONS</span><span>/</span><span id="localTime">Local time</span></div>
+            <h2 id="cityName">—</h2>
+            <p id="countryName">—</p>
+            <div class="temp-row">
+              <span id="temp">--°</span>
+              <span id="icon">☀️</span>
+            </div>
+            <p id="desc">—</p>
+            <p>Feels like <strong id="feels">—</strong></p>
+          </div>
+          <div class="right">
+            <div class="sun"></div>
+            <div class="cloud c1"></div>
+            <div class="cloud c2"></div>
+          </div>
+          <div class="bottom"><span></span> <span id="summary">Your weather, right now</span></div>
+        </section>
+
+        <section class="cards">
+          <div class="card"><span>◒</span><p>Humidity</p><strong id="hum">—</strong><small>Relative humidity</small></div>
+          <div class="card"><span>≋</span><p>Wind speed</p><strong id="wind">—</strong><small>At 10 metres</small></div>
+          <div class="card"><span>♢</span><p>Precipitation</p><strong id="rain">—</strong><small>Current amount</small></div>
+        </section>
+
+        <section>
+          <div class="head"><div><p class="small">LOOKING AHEAD</p><h2>The next five days</h2></div><span>Daily highs & lows</span></div>
+          <div id="days" class="days"></div>
+        </section>
       </div>
+    </main>
 
-      <h3>Next 5 Days</h3>
-      <div id="days"></div>
-    </div>
+    <footer><span>© 2026 Cloudline. All rights reserved.</span><span>Weather data by <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a></span></footer>
   </div>
 </body>
 </html>
